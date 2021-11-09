@@ -21,7 +21,7 @@ func main() {
 
 	// defining argument [1] "input string" and [2] "font/banner"
 	args := os.Args[1]
-	// args2 := os.Args[2]
+	args2 := os.Args[2]
 	// This tells it to print a new line if the arg is solely a new line.
 	if args == "\\n" {
 		fmt.Println()
@@ -43,8 +43,44 @@ func main() {
 		/*The line below uses the make method to make a map
 		and uses a start point of 32 to match up the ascii values
 		of each character to the ascii version of the character*/
-		charMap := am.ColorRed(make(map[int][]string))
+		charMap := make(map[int][]string)
 
+		if args2[8:] == "red" {
+
+			charMap = am.ColorRed(charMap)
+		}
+
+		if args2[8:] == "blue" {
+
+			charMap = am.ColorBlue(charMap)
+		}
+
+		if args2[8:] == "yellow" {
+
+			charMap = am.ColorYellow(charMap)
+		}
+
+		if args2[8:] == "red" {
+
+			charMap = am.ColorRed(charMap)
+		}
+
+		if args2[8:] == "white" {
+
+			charMap = am.ColorWhite(charMap)
+		}
+		if args2[8:] == "cyan" {
+
+			charMap = am.ColorCyan(charMap)
+		}
+		if args2[8:] == "reset" {
+
+			charMap = am.ColorReset(charMap)
+		}
+		if args2[8:] == "purple" {
+
+			charMap = am.ColorPurple(charMap)
+		}
 		start := 32
 
 		for i := 0; i < len(lines); i++ {
@@ -72,9 +108,5 @@ func main() {
 				fmt.Println()
 			}
 		}
-
-		// if args2[:8] == "--color=" {
-		// 	eSlice = am.colorRed(eSlice)
-		// }
 	}
 }
