@@ -58,7 +58,7 @@ func SplitLines(s string) [][]byte {
 	return splitLines
 }
 
-func colorRed(s map[int][]string) map[int][]string {
+func ColorRed(s map[int][]string) map[int][]string {
 	colorRed := "\033[31m"
 
 	fmt.Println(string(colorRed), s)
