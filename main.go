@@ -77,13 +77,9 @@ func main() {
 		fSlice := strings.Join(eSlice, "")
 		fmt.Println(fSlice)
 
-
-
 		// for i:= range fSlice{
 
 		// }
-
-
 
 		if args2[8:] == "red" {
 			fSlice = am.ColorRed(fSlice)
@@ -92,13 +88,13 @@ func main() {
 		if args2[8:] == "blue" {
 			fSlice = am.ColorBlue(fSlice)
 		}
-		if args2[8:] == "yellow" {
-			fSlice = am.ColorYellow(fSlice)
-		}
+		// if args2[8:] == "yellow" {
+		// 	fSlice = am.ColorYellow(fSlice)
+		// }
 
-		if args2[8:] == "white" {
-			fSlice = am.ColorWhite(fSlice)
-		}
+		// if args2[8:] == "white" {
+		// 	fSlice = am.ColorWhite(fSlice)
+		// }
 		// if args2[8:] == "orange" {
 		// 	fSlice = am.ColorOrange(fSlice)
 		// }
