@@ -77,13 +77,7 @@ func main() {
 		fSlice := strings.Join(eSlice, "")
 		fmt.Println(fSlice)
 
-
-
-		// for i:= range fSlice{
-
-		// }
-
-
+		for i, v ra
 
 		if args2[8:] == "red" {
 			fSlice = am.ColorRed(fSlice)
