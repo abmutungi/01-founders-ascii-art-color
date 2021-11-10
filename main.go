@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"git.learn.01founders.co/abmutungi/ascii-art-color.git/am"
 )
@@ -35,7 +36,7 @@ func main() {
 
 		splitLines := am.SplitLines(args)
 
-		lines, err := am.ReadLines("shadow.txt")
+		lines, err := am.ReadLines("standard.txt")
 		if err != nil {
 			log.Fatalf("ReadLines: %s", err)
 		}
@@ -45,42 +46,6 @@ func main() {
 		of each character to the ascii version of the character*/
 		charMap := make(map[int][]string)
 
-		if args2[8:] == "red" {
-
-			charMap = am.ColorRed(charMap)
-		}
-
-		if args2[8:] == "blue" {
-
-			charMap = am.ColorBlue(charMap)
-		}
-
-		if args2[8:] == "yellow" {
-
-			charMap = am.ColorYellow(charMap)
-		}
-
-		if args2[8:] == "red" {
-
-			charMap = am.ColorRed(charMap)
-		}
-
-		if args2[8:] == "white" {
-
-			charMap = am.ColorWhite(charMap)
-		}
-		if args2[8:] == "cyan" {
-
-			charMap = am.ColorCyan(charMap)
-		}
-		if args2[8:] == "reset" {
-
-			charMap = am.ColorReset(charMap)
-		}
-		if args2[8:] == "purple" {
-
-			charMap = am.ColorPurple(charMap)
-		}
 		start := 32
 
 		for i := 0; i < len(lines); i++ {
@@ -92,7 +57,7 @@ func main() {
 		}
 
 		// create empty string slice to append map to
-		// var eSlice []string
+		var eSlice []string
 
 		/*The j below refers to the index of each slice within a
 		created by splitlines, represented by val. The k represents
@@ -101,12 +66,38 @@ func main() {
 		for j, val := range splitLines {
 			for i := 1; i < 9; i++ {
 				for k := 0; k < len(val); k++ {
-					fmt.Print(charMap[int(splitLines[j][k])][i])
-					// eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+					// fmt.Print(charMap[int(splitLines[j][k])][i])
+					eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
 				}
-				// eSlice = append(eSlice, "\n")
-				fmt.Println()
+				eSlice = append(eSlice, "\n")
+				// fmt.Println()
 			}
+		}
+
+		fSlice := strings.Join(eSlice, "")
+
+		if args2[8:] == "red" {
+			fSlice = am.ColorRed(fSlice)
+		}
+
+		if args2[8:] == "blue" {
+			fSlice = am.ColorBlue(fSlice)
+		}
+		if args2[8:] == "yellow" {
+			fSlice = am.ColorYellow(fSlice)
+		}
+
+		if args2[8:] == "white" {
+			fSlice = am.ColorWhite(fSlice)
+		}
+		if args2[8:] == "orange" {
+			fSlice = am.ColorOrange(fSlice)
+		}
+		if args2[8:] == "reset" {
+			fSlice = am.ColorReset(fSlice)
+		}
+		if args2[8:] == "purple" {
+			fSlice = am.ColorPurple(fSlice)
 		}
 	}
 }
