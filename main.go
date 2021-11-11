@@ -13,7 +13,7 @@ func main() {
 	arg := os.Args
 
 	// error handling
-	if len(arg) != 3 {
+	if len(arg) < 3 {
 		fmt.Print("Usage: go run . [STRING] [option]\n")
 		fmt.Println()
 		fmt.Println("EX: go run . something --color=<color>")
@@ -35,6 +35,17 @@ func main() {
 		a slice of slices split whenever there is a new line*/
 
 		splitLines := am.SplitLines(args)
+
+		ColorMap := map[string]string{
+			"red":    "\033[31m",
+			"yellow": "\033[33m",
+			"green":  "\033[32m",
+			"blue":   "\033[34m",
+			"purple": "\033[35m",
+			"orange": "\033[16m",
+			"white":  "\033[37m",
+			"reset":  "\033[0m",
+		}
 
 		lines, err := am.ReadLines("standard.txt")
 		if err != nil {
@@ -63,46 +74,75 @@ func main() {
 		created by splitlines, represented by val. The k represents
 		the length of each individual slice. The i iterates up to 9
 		to match the height of each character.*/
-		for j, val := range splitLines {
-			for i := 1; i < 9; i++ {
-				for k := 0; k < len(val); k++ {
-					// fmt.Print(charMap[int(splitLines[j][k])][i])
-					eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+		if args2[8:] == "red" {
+			for j, val := range splitLines {
+				for i := 1; i < 9; i++ {
+					for k := 0; k < len(val); k++ {
+						for l := 0; 0 < len(ColorMap); l++ {
+							// fmt.Print(charMap[int(splitLines[j][k])][i][l])
+							eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+						}
+						eSlice = append(eSlice, "\n")
+						// eSlice = am.ColorRed(eSlice[3])
+						// fmt.Println()
+					}
 				}
-				eSlice = append(eSlice, "\n")
-				// fmt.Println()
+			}
+		} else {
+			for j, val := range splitLines {
+				for i := 1; i < 9; i++ {
+					for k := 0; k < len(val); k++ {
+						// fmt.Print(charMap[int(splitLines[j][k])][i])
+						eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+					}
+					eSlice = append(eSlice, "\n")
+					// fmt.Println()
+				}
+			}
+
+			fSlice := strings.Join(eSlice, "")
+			// fmt.Println(fSlice)
+
+			// for i:= range fSlice{
+
+			// }
+
+			// if args2[8:11] == "red" {
+			// fSlice = am.ColorRed(fSlice)
+			// } else {
+			// 	fmt.Println(am.ColorNum(eSlice))
+			// }
+
+			// if args2[8:] == "blue" {
+			// 	fSlice = am.ColorBlue(fSlice)
+			// }
+			// if args2[8:] == "yellow" {
+			// 	fSlice = am.ColorYellow(fSlice)
+			// }
+
+			// // if args2[8:] == "white" {
+			// // 	fSlice = am.ColorWhite(fSlice)
+			// // }
+			// if args2[8:] == "orange" {
+			// 	fSlice = am.ColorOrange(fSlice)
+			//}
+			// if args2[8:] == "reset" {
+			// 	fSlice = am.ColorReset(fSlice)
+			// }
+			// if args2[8:] == "purple" {
+			// 	fSlice = am.ColorPurple(fSlice)
+			// }
+
+			if args2[8:] == "red" && args2[11] == '[' && args2[13] == ']' {
+				for i := range fSlice {
+					// fmt.Println("1")
+					if fSlice[i] == args2[12] {
+						fmt.Println("1")
+						fmt.Println(am.ColorRed(string(fSlice[i])))
+					}
+				}
 			}
 		}
 
-		fSlice := strings.Join(eSlice, "")
-		// fmt.Println(fSlice)
-
-		// for i:= range fSlice{
-
-		// }
-
-		if args2[8:] == "red" {
-			fSlice = am.ColorRed(fSlice)
-		}
-
-		if args2[8:] == "blue" {
-			fSlice = am.ColorBlue(fSlice)
-		}
-		if args2[8:] == "yellow" {
-			fSlice = am.ColorYellow(fSlice)
-		}
-
-		// if args2[8:] == "white" {
-		// 	fSlice = am.ColorWhite(fSlice)
-		// }
-		if args2[8:] == "orange" {
-			fSlice = am.ColorOrange(fSlice)
-		}
-		if args2[8:] == "reset" {
-			fSlice = am.ColorReset(fSlice)
-		}
-		if args2[8:] == "purple" {
-			fSlice = am.ColorPurple(fSlice)
-		}
 	}
 }
