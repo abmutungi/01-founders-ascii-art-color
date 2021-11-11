@@ -27,6 +27,19 @@ func main() {
 	if args == "\\n" {
 		fmt.Println()
 	} else if args != "" {
+
+		colourMap := map[string]string{
+			"reset": "\033[0m",
+
+			"red":    "\033[31m",
+			"green":  "\033[32m",
+			"yellow": "\033[33m",
+			"blue":   "\033[34m",
+			"purple": "\033[35m",
+			"cyan":   "\033[36m",
+			"white":  "\033[37m",
+		}
+		
 		/*The else clause above tells the program to do nothing if
 		the argument is an empty string with the rest of the program
 		only running if the arg is not an empty string*/
@@ -77,30 +90,28 @@ func main() {
 		fSlice := strings.Join(eSlice, "")
 		fmt.Println(fSlice)
 
-		for i, v ra
-
 		if args2[8:] == "red" {
 			fSlice = am.ColorRed(fSlice)
 		}
 
-		if args2[8:] == "blue" {
-			fSlice = am.ColorBlue(fSlice)
-		}
-		if args2[8:] == "yellow" {
-			fSlice = am.ColorYellow(fSlice)
-		}
-
-		if args2[8:] == "white" {
-			fSlice = am.ColorWhite(fSlice)
-		}
-		// if args2[8:] == "orange" {
-		// 	fSlice = am.ColorOrange(fSlice)
+		// if args2[8:] == "blue" {
+		// 	fSlice = am.ColorBlue(fSlice)
 		// }
-		if args2[8:] == "reset" {
-			fSlice = am.ColorReset(fSlice)
-		}
-		if args2[8:] == "purple" {
-			fSlice = am.ColorPurple(fSlice)
-		}
+		// if args2[8:] == "yellow" {
+		// 	fSlice = am.ColorYellow(fSlice)
+		// }
+
+		// if args2[8:] == "white" {
+		// 	fSlice = am.ColorWhite(fSlice)
+		// }
+		// // if args2[8:] == "orange" {
+		// // 	fSlice = am.ColorOrange(fSlice)
+		// // }
+		// if args2[8:] == "reset" {
+		// 	fSlice = am.ColorReset(fSlice)
+		// }
+		// if args2[8:] == "purple" {
+		// 	fSlice = am.ColorPurple(fSlice)
+		// }
 	}
 }
