@@ -28,18 +28,22 @@ func main() {
 		fmt.Println()
 	} else if args != "" {
 
-		colourMap := map[string]string{
-			"reset": "\033[0m",
+		// colourMap := map[string]string{
+		// 	"reset": "\033[0m",
 
-			"red":    "\033[31m",
-			"green":  "\033[32m",
-			"yellow": "\033[33m",
-			"blue":   "\033[34m",
-			"purple": "\033[35m",
-			"cyan":   "\033[36m",
-			"white":  "\033[37m",
-		}
-		
+		// 	"red":    "\033[31m",
+		// 	"green":  "\033[32m",
+		// 	"yellow": "\033[33m",
+		// 	"blue":   "\033[34m",
+		// 	"purple": "\033[35m",
+		// 	"cyan":   "\033[36m",
+		// 	"white":  "\033[37m",
+		// }
+
+		// _ = colourMap
+
+		// fmt.Println(colourMap)
+
 		/*The else clause above tells the program to do nothing if
 		the argument is an empty string with the rest of the program
 		only running if the arg is not an empty string*/
@@ -76,9 +80,13 @@ func main() {
 		created by splitlines, represented by val. The k represents
 		the length of each individual slice. The i iterates up to 9
 		to match the height of each character.*/
+	if args2[8:] == "red" {
 		for j, val := range splitLines {
 			for i := 1; i < 9; i++ {
 				for k := 0; k < len(val); k++ {
+					if k == 1 {
+						eSlice = append(am.ColorRed(eSlice), charMap[int(splitLines[j][k])][i])
+					} else {
 					// fmt.Print(charMap[int(splitLines[j][k])][i])
 					eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
 				}
@@ -86,13 +94,21 @@ func main() {
 				// fmt.Println()
 			}
 		}
-
 		fSlice := strings.Join(eSlice, "")
-		fmt.Println(fSlice)
+		fmt.Println(am.ColorOrange(fSlice))
+	}
+}
+		// fSlice := strings.Join(eSlice, "")
+		// fmt.Println(fSlice)
 
-		if args2[8:] == "red" {
-			fSlice = am.ColorRed(fSlice)
+
+		if args2[8:] == "" {
+			fmt.Print("Usage: go run . [STRING] [option]\n")
+		fmt.Println()
+		fmt.Println("EX: go run . something --color=<color>")
 		}
+
+
 
 		// if args2[8:] == "blue" {
 		// 	fSlice = am.ColorBlue(fSlice)

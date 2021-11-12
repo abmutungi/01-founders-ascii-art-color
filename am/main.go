@@ -48,15 +48,22 @@ func SplitLines(s string) [][]byte {
 	return splitLines
 }
 
-
 // func ColorChar(s string) []byte {
 
 // }
 
-func ColorRed(s string) string {
+func ColorRed(s [] string) [] string {
 	colorRed := "\033[31m"
 
 	fmt.Println(colorRed, s)
+
+	return s
+}
+
+func ColorOrange(s string) string {
+	colorOrange := "\033[38;5;214m"
+
+	fmt.Println(colorOrange, s)
 
 	return s
 }
@@ -93,14 +100,6 @@ func ColorPurple(s string) string {
 	return s
 }
 
-func ColorOrange(s string) string {
-	colorOrange := "\033[16m"
-
-	fmt.Println(string(colorOrange), s)
-
-	return s
-}
-
 func ColorWhite(s string) string {
 	colorWhite := "\033[37m"
 
@@ -115,4 +114,25 @@ func ColorReset(s string) string {
 	fmt.Println(string(colorReset), s)
 
 	return s
+}
+
+func TrimAtoi(s string) int {
+	neg := false
+	str := []rune(s)
+	trim := 0
+
+	for i := 0; i < len(str); i++ {
+
+		if !neg && trim == 0 && str[i] == '-' {
+			neg = true
+		}
+		if str[i] >= '0' && str[i] <= '9' {
+			trim *= 10
+			trim += int(str[i] - 48)
+		}
+	}
+	if neg {
+		return trim * -1
+	}
+	return trim
 }
