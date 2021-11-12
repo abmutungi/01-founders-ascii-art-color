@@ -84,7 +84,7 @@ func main() {
 		for j, val := range splitLines {
 			for i := 1; i < 9; i++ {
 				for k := 0; k < len(val); k++ {
-					if k == 1 {
+					if k == 1 && val[k] != 32 {
 						eSlice = append(am.ColorRed(eSlice), charMap[int(splitLines[j][k])][i])
 					// eSlice = append(eSlice, "\n")
 					} else {
