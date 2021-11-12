@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	//"strings"
 
 	"git.learn.01founders.co/abmutungi/ascii-art-color.git/am"
 )
@@ -80,54 +79,51 @@ func main() {
 		created by splitlines, represented by val. The k represents
 		the length of each individual slice. The i iterates up to 9
 		to match the height of each character.*/
-	if args2[8:] == "red" {
-		for j, val := range splitLines {
-			for i := 1; i < 9; i++ {
+		if args2[8:] == "red" {
+			for j, val := range splitLines {
 				for k := 0; k < len(val); k++ {
-					if k == 1 && val[k] != 32 {
-						eSlice = append(am.ColorRed(eSlice), charMap[int(splitLines[j][k])][i])
-					// eSlice = append(eSlice, "\n")
-					} else {
-					// fmt.Print(charMap[int(splitLines[j][k])][i])
-					eSlice = append(am.ColorBlue(eSlice), charMap[int(splitLines[j][k])][i])
+					for i := 1; i < 9; i++ {
+						if k == 2 {
+							fmt.Println("hello")
+							// eSlice = append(am.ColorRed(eSlice), charMap[int(splitLines[j][k])][i])
+						} else {
+							eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+							// fmt.Print(charMap[int(splitLines[j][k])][i])
+						}
+						eSlice = append(eSlice, "\n")
+						// fmt.Println()
+					}
 				}
-				eSlice = append(eSlice, "\n")
-				// fmt.Println()
+				am.ColorRed(eSlice)
 			}
+			// fSlice := strings.Join(eSlice, "")
+			// fmt.Println(fSlice)
+
+			if args2[8:] == "" {
+				fmt.Print("Usage: go run . [STRING] [option]\n")
+				fmt.Println()
+				fmt.Println("EX: go run . something --color=<color>")
+			}
+
+			// if args2[8:] == "blue" {
+			// 	fSlice = am.ColorBlue(fSlice)
+			// }
+			// if args2[8:] == "yellow" {
+			// 	fSlice = am.ColorYellow(fSlice)
+			// }
+
+			// if args2[8:] == "white" {
+			// 	fSlice = am.ColorWhite(fSlice)
+			// }
+			// // if args2[8:] == "orange" {
+			// // 	fSlice = am.ColorOrange(fSlice)
+			// // }
+			// if args2[8:] == "reset" {
+			// 	fSlice = am.ColorReset(fSlice)
+			// }
+			// if args2[8:] == "purple" {
+			// 	fSlice = am.ColorPurple(fSlice)
+			// }
 		}
-		
-	}
-}
-		// fSlice := strings.Join(eSlice, "")
-		// fmt.Println(fSlice)
-
-
-		if args2[8:] == "" {
-			fmt.Print("Usage: go run . [STRING] [option]\n")
-		fmt.Println()
-		fmt.Println("EX: go run . something --color=<color>")
-		}
-
-
-
-		// if args2[8:] == "blue" {
-		// 	fSlice = am.ColorBlue(fSlice)
-		// }
-		// if args2[8:] == "yellow" {
-		// 	fSlice = am.ColorYellow(fSlice)
-		// }
-
-		// if args2[8:] == "white" {
-		// 	fSlice = am.ColorWhite(fSlice)
-		// }
-		// // if args2[8:] == "orange" {
-		// // 	fSlice = am.ColorOrange(fSlice)
-		// // }
-		// if args2[8:] == "reset" {
-		// 	fSlice = am.ColorReset(fSlice)
-		// }
-		// if args2[8:] == "purple" {
-		// 	fSlice = am.ColorPurple(fSlice)
-		// }
 	}
 }

@@ -111,7 +111,7 @@ func ColorWhite(s string) string {
 func ColorReset(s string) string {
 	colorReset := "\033[0m"
 
-	fmt.Println(string(colorReset), s)
+	fmt.Println(colorReset, s)
 
 	return s
 }
