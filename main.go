@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
+	//"strings"
 
 	"git.learn.01founders.co/abmutungi/ascii-art-color.git/am"
 )
@@ -86,16 +86,16 @@ func main() {
 				for k := 0; k < len(val); k++ {
 					if k == 1 {
 						eSlice = append(am.ColorRed(eSlice), charMap[int(splitLines[j][k])][i])
+					// eSlice = append(eSlice, "\n")
 					} else {
 					// fmt.Print(charMap[int(splitLines[j][k])][i])
-					eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+					eSlice = append(am.ColorBlue(eSlice), charMap[int(splitLines[j][k])][i])
 				}
 				eSlice = append(eSlice, "\n")
 				// fmt.Println()
 			}
 		}
-		fSlice := strings.Join(eSlice, "")
-		fmt.Println(am.ColorOrange(fSlice))
+		
 	}
 }
 		// fSlice := strings.Join(eSlice, "")

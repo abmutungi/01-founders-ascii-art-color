@@ -84,7 +84,7 @@ func ColorGreen(s string) string {
 	return s
 }
 
-func ColorBlue(s string) string {
+func ColorBlue(s [] string) []string {
 	colorBlue := "\033[34m"
 
 	fmt.Println(string(colorBlue), s)
