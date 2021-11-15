@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"strings"
 
 	"git.learn.01founders.co/abmutungi/ascii-art-color.git/am"
@@ -26,6 +27,7 @@ func main() {
 	args := os.Args[1]
 	args2 := os.Args[2]
 	args3 := os.Args[3]
+	numarg3, _ := strconv.Atoi(args3)
 	// This tells it to print a new line if the arg is solely a new line.
 	if args == "\\n" {
 		fmt.Println()
@@ -96,10 +98,10 @@ func main() {
 		to match the height of each character.*/
 
 		for j, val := range splitLines {
-			for k := 0; k < len(val); k++ {
-				for i := 1; i < 9; i++ {
-					for _, elem := range colourMap {
-						if args2[8:] == colourMap[elem] && args3 == eSlice[k] {
+			for i := 1; i < 9; i++ {
+				for _, elem := range colourMap {
+					for k := 0; k < len(val); k++ {
+						if args2[8:] == colourMap[elem] && numarg3 == k {
 							// if k == 2 {
 							// fmt.Println("hello")
 							eSlice = append((am.ColorBlue(eSlice)), charMap[int(splitLines[j][k])][i])
@@ -149,7 +151,6 @@ func main() {
 			// if args2[8:] == "purple" {
 			// 	fSlice = am.ColorPurple(fSlice)
 			// }
-
 		}
 	}
 }
