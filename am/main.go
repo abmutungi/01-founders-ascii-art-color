@@ -60,7 +60,7 @@ func ColorRed(s [] string) [] string {
 	return s
 }
 
-func ColorOrange(s string) string {
+func ColorOrange(s [] string) [] string {
 	colorOrange := "\033[38;5;214m"
 
 	fmt.Println(colorOrange, s)
@@ -108,7 +108,7 @@ func ColorWhite(s string) string {
 	return s
 }
 
-func ColorReset(s string) string {
+func ColorReset(s []string) []string {
 	colorReset := "\033[0m"
 
 	fmt.Println(colorReset, s)

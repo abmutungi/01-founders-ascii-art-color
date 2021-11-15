@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"git.learn.01founders.co/abmutungi/ascii-art-color.git/am"
 )
@@ -84,20 +85,26 @@ func main() {
 				for k := 0; k < len(val); k++ {
 					for i := 1; i < 9; i++ {
 						if k == 2 {
-							fmt.Println("hello")
-							// eSlice = append(am.ColorRed(eSlice), charMap[int(splitLines[j][k])][i])
-						} else {
-							eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
-							// fmt.Print(charMap[int(splitLines[j][k])][i])
+							//fmt.Println("hello")
+							eSlice = append(am.ColorRed(eSlice), charMap[int(splitLines[j][k])][i])
+							am.ColorReset(eSlice)
+							} else {
+							//eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+							fmt.Print(charMap[int(splitLines[j][k])][i])
 						}
-						eSlice = append(eSlice, "\n")
+						//eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+
+					eSlice = append(eSlice, "\n")
 						// fmt.Println()
 					}
+				// eSlice = append(eSlice, "\n")
+
 				}
-				am.ColorRed(eSlice)
 			}
-			// fSlice := strings.Join(eSlice, "")
-			// fmt.Println(fSlice)
+			//am.ColorReset(eSlice)
+			// }
+			fSlice := strings.Join(eSlice, "")
+			fmt.Println(fSlice)
 
 			if args2[8:] == "" {
 				fmt.Print("Usage: go run . [STRING] [option]\n")
