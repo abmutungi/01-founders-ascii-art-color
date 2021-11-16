@@ -2,7 +2,6 @@ package am
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 )
 
@@ -46,74 +45,6 @@ func SplitLines(s string) [][]byte {
 		}
 	}
 	return splitLines
-}
-
-// func ColorChar(s string) []byte {
-
-// }
-
-func ColorRed(s [] string) [] string {
-	colorRed := "\033[31m"
-
-	fmt.Println(colorRed, s)
-
-	return s
-}
-
-func ColorOrange(s [] string) [] string {
-	colorOrange := "\033[38;5;214m"
-
-	fmt.Println(colorOrange, s)
-
-	return s
-}
-
-func ColorYellow(s string) string {
-	colorYellow := "\033[33m"
-
-	fmt.Println(string(colorYellow), s)
-
-	return s
-}
-
-func ColorGreen(s string) string {
-	colorGreen := "\033[32m"
-
-	fmt.Println(string(colorGreen), s)
-
-	return s
-}
-
-func ColorBlue(s [] string) []string {
-	colorBlue := "\033[34m"
-
-	fmt.Println(string(colorBlue), s)
-
-	return s
-}
-
-func ColorPurple(s string) string {
-	colorPurple := "\033[35m"
-
-	fmt.Println(string(colorPurple), s)
-
-	return s
-}
-
-func ColorWhite(s string) string {
-	colorWhite := "\033[37m"
-
-	fmt.Println(string(colorWhite), s)
-
-	return s
-}
-
-func ColorReset(s []string) []string {
-	colorReset := "\033[0m"
-
-	fmt.Println(colorReset, s)
-
-	return s
 }
 
 func TrimAtoi(s string) int {
