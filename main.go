@@ -4,11 +4,8 @@ import (
 	"fmt"
 	"log"
 	"os"
-
-	//"strconv"
+	"strconv"
 	"strings"
-
-	//"strconv"
 
 	"git.learn.01founders.co/abmutungi/ascii-art-color.git/am"
 )
@@ -98,7 +95,7 @@ func main() {
 
 		fSlice := strings.Join(eSlice, "")
 
-		if colourMap[args2[8:]] != "" {
+		if colourMap[args2[8:]] != "" || args3 != 0 {
 			fmt.Println(colourMap[args2[8:]], fSlice)
 		}
 
@@ -108,7 +105,7 @@ func main() {
 			fmt.Println("EX: go run . something --color=<color>")
 		}
 
-		//work in progress
+		// work in progress
 		// for i := 1 ; i < args3 ; i++ {
 		// 	fmt.Println(colourMap["reset"], fSlice) // fSlice in this case is everything but the character at index
 		// }
