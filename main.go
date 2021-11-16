@@ -85,14 +85,15 @@ func main() {
 		for j, val := range splitLines {
 			for i := 1; i < 9; i++ {
 				for k := 0; k < len(val); k++ {
-					// for _, c := range colourMap {
-					// if args2[8:] == "red" && k == args3 {
-					eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+					if k == args3 {
+						eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+					} //  else {
+					// 	eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
+					// }
 				}
 				eSlice = append(eSlice, "\n")
 			}
 		}
-
 		fSlice := strings.Join(eSlice, "")
 
 		if colourMap[args2[8:]] != "" || args3 != 0 {

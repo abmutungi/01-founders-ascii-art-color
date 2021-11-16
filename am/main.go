@@ -2,6 +2,7 @@ package am
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 )
 
@@ -45,6 +46,14 @@ func SplitLines(s string) [][]byte {
 		}
 	}
 	return splitLines
+}
+
+func ColorReset(s []string) []string {
+	colorReset := "\033[0m"
+
+	fmt.Println(colorReset, s)
+
+	return s
 }
 
 func TrimAtoi(s string) int {
