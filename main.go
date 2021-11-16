@@ -14,7 +14,7 @@ func main() {
 	arg := os.Args
 
 	// error handling
-	if len(arg) != 3 {
+	if len(arg) != 4 {
 		fmt.Print("Usage: go run . [STRING] [option]\n")
 		fmt.Println()
 		fmt.Println("EX: go run . something --color=<color>")
