@@ -74,12 +74,11 @@ func main() {
 			charMap[start] = append(charMap[start], lines[i])
 		}
 
-		// create empty string slice to append map to
-		// var eSlice []string
-
 		/*The j below refers to the index of each slice within string
 		from the input (args) The i iterates up to 9
 		to match the height of each character.*/
+
+		// first condition allows user to add colour to the whole string
 		if colourMap[args2[8:]] != "" && !strings.Contains(args2[8:], ":") {
 			for i := 1; i < 9; i++ {
 				for j := 0; j < len(args); j++ {
@@ -89,7 +88,9 @@ func main() {
 				}
 				fmt.Println()
 				fmt.Print(colourMap["reset"])
-			}
+
+			} // second condition allows user to add colour to one character in string
+			// user will need to use the index +1
 		} else if colourMap[args2[8:(len(args2)-2)]] != "" && strings.Contains(args2[8:], ":") {
 			for i := 1; i < 9; i++ {
 				for j := 0; j < len(args); j++ {
@@ -104,7 +105,9 @@ func main() {
 				}
 				fmt.Println()
 				fmt.Print(colourMap["reset"])
-			}
+
+			} // third condition allows user to add colour to a range of characters within string
+			// user will need to use the index +1
 		} else if colourMap[args2[8:(len(args2)-4)]] != "" && strings.Contains(args2[8:], "-") {
 
 			num1 := args2[8 : len(args2)-1]
@@ -118,14 +121,13 @@ func main() {
 						fmt.Print(colourMap[args2[8:(len(args2)-4)]], charMap[int(args[j])][i])
 					} else {
 						fmt.Print(colourMap["reset"], charMap[int(args[j])][i])
-						// fmt.Print()
 					}
 				}
 				fmt.Println()
 				fmt.Print(colourMap["reset"])
 			}
 		}
-
+		// error handling
 		if args2[8:] == "" {
 			fmt.Print("Usage: go run . [STRING] [option]\n")
 			fmt.Println()
