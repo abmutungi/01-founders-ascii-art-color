@@ -117,10 +117,7 @@ func main() {
 
 			for i := 1; i < 9; i++ {
 				for j := 0; j < len(args); j++ {
-					if args[j] == 32 {
-						j = j + 1
-						fmt.Print(colourMap[args2[8:(len(args2)-4)]], charMap[int(args[j])][i])
-					} else if j >= first_num-1 && j <= second_num-1 {
+					if j >= first_num-1 && j <= second_num-1 {
 						fmt.Print(colourMap[args2[8:(len(args2)-4)]], charMap[int(args[j])][i])
 					} else {
 						fmt.Print(colourMap["reset"], charMap[int(args[j])][i])
