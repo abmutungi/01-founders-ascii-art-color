@@ -80,7 +80,7 @@ func main() {
 		/*The j below refers to the index of each slice within string
 		from the input (args) The i iterates up to 9
 		to match the height of each character.*/
-		if colourMap[args2[8:(len(args2)-1)]] != "" && !strings.Contains(args2[8:(len(args2)-1)], ":") {
+		if colourMap[args2[8:]] != "" && !strings.Contains(args2[8:], ":") {
 			for i := 1; i < 9; i++ {
 				for j := 0; j < len(args); j++ {
 					// if j == args {
@@ -90,30 +90,46 @@ func main() {
 				fmt.Println()
 				fmt.Print(colourMap["reset"])
 			}
-		} else if colourMap[args2[8:(len(args2)-1)]] != "" && strings.Contains(args2[8:(len(args2)-1)], ":") {
+		} else if colourMap[args2[8:(len(args2)-2)]] != "" && strings.Contains(args2[8:], ":") {
 			for i := 1; i < 9; i++ {
 				for j := 0; j < len(args); j++ {
-					// if j == args {
-					fmt.Print(colourMap[args2[8:(len(args2)-1)]], charMap[int(args[j])][i])
-					// fmt.Print()
+					num := am.TrimAtoi(args2[8:])
+					if num-1 == j {
+						fmt.Print(colourMap[args2[8:(len(args2)-2)]], charMap[int(args[j])][i])
+					} else {
+						fmt.Print(colourMap["reset"], charMap[int(args[j])][i])
+						// fmt.Print()
+					}
+
 				}
 				fmt.Println()
 				fmt.Print(colourMap["reset"])
+			}
+		} else if colourMap[args2[8:(len(args2)-4)]] != "" && strings.Contains(args2[8:], "-") {
 
+			num1 := args2[8 : len(args2)-1]
+			num2 := args2[len(args2)-2:]
+			first_num := am.TrimAtoi(num1)
+			second_num := am.TrimAtoi(num2)
+
+			for i := 1; i < 9; i++ {
+				for j := 0; j < len(args); j++ {
+					if j >= first_num-1 && j <= second_num-1 {
+						fmt.Print(colourMap[args2[8:(len(args2)-4)]], charMap[int(args[j])][i])
+					} else {
+						fmt.Print(colourMap["reset"], charMap[int(args[j])][i])
+						// fmt.Print()
+					}
+				}
+				fmt.Println()
+				fmt.Print(colourMap["reset"])
 			}
 		}
-
-		// fSlice := strings.Join(eSlice, "")
 
 		if args2[8:] == "" {
 			fmt.Print("Usage: go run . [STRING] [option]\n")
 			fmt.Println()
 			fmt.Println("EX: go run . something --color=<color>")
 		}
-
-		// work in progress
-		// for i := 1 ; i < args3 ; i++ {
-		// 	fmt.Println(colourMap["reset"], fSlice) // fSlice in this case is everything but the character at index
-		// }
 	}
 }
