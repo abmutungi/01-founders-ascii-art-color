@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 	"strings"
 
 	"git.learn.01founders.co/abmutungi/ascii-art-color.git/am"
@@ -14,7 +13,7 @@ func main() {
 	arg := os.Args
 
 	// error handling
-	if len(arg) != 4 {
+	if len(arg) != 3 {
 		fmt.Print("Usage: go run . [STRING] [option]\n")
 		fmt.Println()
 		fmt.Println("EX: go run . something --color=<color>")
@@ -24,8 +23,8 @@ func main() {
 	// defining argument [1] "input string" and [2] "font/banner"
 	args := os.Args[1]
 	args2 := os.Args[2]
-	args3, err := strconv.Atoi(os.Args[3])
-	_ = err
+	// args3, err := strconv.Atoi(os.Args[3])
+	// _ = err
 
 	// This tells it to print a new line if the arg is solely a new line.
 	if args == "\\n" {
@@ -53,7 +52,7 @@ func main() {
 		/* The func splitlines splits the string of the arg into
 		a slice of slices split whenever there is a new line*/
 
-		splitLines := am.SplitLines(args)
+		// splitLines := am.SplitLines(args)
 
 		lines, err := am.ReadLines("standard.txt")
 		if err != nil {
@@ -75,40 +74,64 @@ func main() {
 			charMap[start] = append(charMap[start], lines[i])
 		}
 
-		// create empty string slice to append map to
-		var eSlice []string
-
-		/*The j below refers to the index of each slice within a
-		created by splitlines, represented by val. The k represents
-		the length of each individual slice. The i iterates up to 9
+		/*The j below refers to the index of each slice within string
+		from the input (args) The i iterates up to 9
 		to match the height of each character.*/
-		for j, val := range splitLines {
+
+		// first condition allows user to add colour to the whole string
+		if colourMap[args2[8:]] != "" && !strings.Contains(args2[8:], ":") {
 			for i := 1; i < 9; i++ {
-				for k := 0; k < len(val); k++ {
-					if k == args3 {
-						eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
-					} //  else {
-					// 	eSlice = append(eSlice, charMap[int(splitLines[j][k])][i])
-					// }
+				for j := 0; j < len(args); j++ {
+					// if j == args {
+					fmt.Print(colourMap[args2[8:]], charMap[int(args[j])][i])
+					// fmt.Print()
 				}
-				eSlice = append(eSlice, "\n")
+				fmt.Println()
+				fmt.Print(colourMap["reset"])
+
+			} // second condition allows user to add colour to one character in string
+			// user will need to use the index +1
+		} else if colourMap[args2[8:(len(args2)-2)]] != "" && strings.Contains(args2[8:], ":") {
+			for i := 1; i < 9; i++ {
+				for j := 0; j < len(args); j++ {
+					num := am.TrimAtoi(args2[8:])
+					if num-1 == j {
+						fmt.Print(colourMap[args2[8:(len(args2)-2)]], charMap[int(args[j])][i])
+					} else {
+						fmt.Print(colourMap["reset"], charMap[int(args[j])][i])
+						// fmt.Print()
+					}
+
+				}
+				fmt.Println()
+				fmt.Print(colourMap["reset"])
+
+			} // third condition allows user to add colour to a range of characters within string
+			// user will need to use the index +1
+		} else if colourMap[args2[8:(len(args2)-4)]] != "" && strings.Contains(args2[8:], "-") {
+
+			num1 := args2[8 : len(args2)-1]
+			num2 := args2[len(args2)-2:]
+			first_num := am.TrimAtoi(num1)
+			second_num := am.TrimAtoi(num2)
+
+			for i := 1; i < 9; i++ {
+				for j := 0; j < len(args); j++ {
+					if j >= first_num-1 && j <= second_num-1 {
+						fmt.Print(colourMap[args2[8:(len(args2)-4)]], charMap[int(args[j])][i])
+					} else {
+						fmt.Print(colourMap["reset"], charMap[int(args[j])][i])
+					}
+				}
+				fmt.Println()
+				fmt.Print(colourMap["reset"])
 			}
 		}
-		fSlice := strings.Join(eSlice, "")
-
-		if colourMap[args2[8:]] != "" || args3 != 0 {
-			fmt.Println(colourMap[args2[8:]], fSlice)
-		}
-
+		// error handling
 		if args2[8:] == "" {
 			fmt.Print("Usage: go run . [STRING] [option]\n")
 			fmt.Println()
 			fmt.Println("EX: go run . something --color=<color>")
 		}
-
-		// work in progress
-		// for i := 1 ; i < args3 ; i++ {
-		// 	fmt.Println(colourMap["reset"], fSlice) // fSlice in this case is everything but the character at index
-		// }
 	}
 }
