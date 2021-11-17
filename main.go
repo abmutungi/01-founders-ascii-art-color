@@ -84,7 +84,7 @@ func main() {
 			for i := 1; i < 9; i++ {
 				for j := 0; j < len(args); j++ {
 					// if j == args {
-					fmt.Print(colourMap[args2[8:(len(args2)-1)]], charMap[int(args[j])][i])
+					fmt.Print(colourMap[args2[8:]], charMap[int(args[j])][i])
 					// fmt.Print()
 				}
 				fmt.Println()
