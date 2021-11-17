@@ -34,14 +34,17 @@ func main() {
 		colourMap := map[string]string{
 			"reset": "\033[0m",
 
-			"red":    "\033[31m",
-			"green":  "\033[32m",
-			"yellow": "\033[33m",
-			"blue":   "\033[34m",
-			"purple": "\033[35m",
-			"cyan":   "\033[36m",
-			"white":  "\033[37m",
-			"orange": "\033[38;5;214m",
+			"red":        "\033[31m",
+			"green":      "\033[32m",
+			"yellow":     "\033[33m",
+			"blue":       "\033[34m",
+			"purple":     "\033[35m",
+			"cyan":       "\033[36m",
+			"white":      "\033[37m",
+			"orange":     "\033[38;5;214m",
+			"#ff0000":    "\033[31m",
+			"255,0,0":    "\033[31m",
+			"0,100%,50%": "\033[31m",
 		}
 		// fmt.Println(colourMap)
 
