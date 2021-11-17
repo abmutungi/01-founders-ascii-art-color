@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"git.learn.01founders.co/abmutungi/ascii-art-color.git/am"
 )
@@ -79,7 +80,7 @@ func main() {
 		/*The j below refers to the index of each slice within string
 		from the input (args) The i iterates up to 9
 		to match the height of each character.*/
-		if colourMap[args2[8:(len(args2)-1)]] != "" {
+		if colourMap[args2[8:(len(args2)-1)]] != "" && !strings.Contains(args2[8:(len(args2)-1)], ":") {
 			for i := 1; i < 9; i++ {
 				for j := 0; j < len(args); j++ {
 					// if j == args {
@@ -87,8 +88,19 @@ func main() {
 					// fmt.Print()
 				}
 				fmt.Println()
+				fmt.Print(colourMap["reset"])
 			}
+		} else if colourMap[args2[8:(len(args2)-1)]] != "" && strings.Contains(args2[8:(len(args2)-1)], ":") {
+			for i := 1; i < 9; i++ {
+				for j := 0; j < len(args); j++ {
+					// if j == args {
+					fmt.Print(colourMap[args2[8:(len(args2)-1)]], charMap[int(args[j])][i])
+					// fmt.Print()
+				}
+				fmt.Println()
+				fmt.Print(colourMap["reset"])
 
+			}
 		}
 
 		// fSlice := strings.Join(eSlice, "")
