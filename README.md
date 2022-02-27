@@ -6,7 +6,7 @@ The objective is to build upon [Ascii-Art program](https://github.com/abmutungi/
 
 This project introduced me to :
 
-The Go file system(fs) API
+- The Go file system(fs) API
 - Color converters
 - Data manipulation
 - Terminal display
